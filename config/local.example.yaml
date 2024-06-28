@@ -1,0 +1,6 @@
+env: "local"
+grpc:
+  port: 44044
+  timeout: 10h
+token_ttl: 5h
+db_uri: "your db_uri here"
