@@ -3,20 +3,36 @@ package main
 import (
 	"log/slog"
 	"os"
+	"os/signal"
+	"syscall"
 
+	"github.com/paniccaaa/sso/internal/app"
 	"github.com/paniccaaa/sso/internal/config"
 )
 
 func main() {
 	// init config
 	cfg := config.MustLoad()
-	//fmt.Println(cfg)
 
 	// init logger
 	log := setupLogger(cfg.Env)
+	log.Info("starting app", slog.Int("cfg", cfg.GRPC.Port))
 
 	// init app
+	app := app.NewApp(log, cfg.GRPC.Port, cfg.DbURI, cfg.TokenTTL)
+
 	// start grpc-server app
+	go func() {
+		app.GRPCServer.MustRun()
+	}()
+
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, syscall.SIGTERM, syscall.SIGINT)
+
+	<-stop
+
+	app.GRPCServer.Stop()
+	log.Info("Gracefully stopped")
 }
 
 const (
