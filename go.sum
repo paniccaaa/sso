@@ -7,8 +7,8 @@ github.com/ilyakaznacheev/cleanenv v1.5.0 h1:0VNZXggJE2OYdXE87bfSSwGxeiGt9moSR2l
 github.com/ilyakaznacheev/cleanenv v1.5.0/go.mod h1:a5aDzaJrLCQZsazHol1w8InnDcOX0OColm64SlIi6gk=
 github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
 github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
-github.com/paniccaaa/protos v0.0.2 h1:0eQYoV4JbuYw5ayrc3vTDN07jh2E+W82hfuO1fH2VQQ=
-github.com/paniccaaa/protos v0.0.2/go.mod h1:WHrrnKfHxymGB84l+0p/MN8S/kmwZxPFBv7Mm4QySSw=
+github.com/paniccaaa/protos v0.0.3 h1:SZIzeKXQHVm8BKt0mK93w0hKbjFtYr0zmvZPKbiVA18=
+github.com/paniccaaa/protos v0.0.3/go.mod h1:WHrrnKfHxymGB84l+0p/MN8S/kmwZxPFBv7Mm4QySSw=
 golang.org/x/net v0.22.0 h1:9sGLhx7iRIHEiX0oAJ3MRZMUCElJgy7Br1nO+AMN3Tc=
 golang.org/x/net v0.22.0/go.mod h1:JKghWKKOSdJwpW2GEx0Ja7fmaKnMsbu+MWVZTokSYmg=
 golang.org/x/sys v0.18.0 h1:DBdB3niSjOA/O0blCZBqDefyWNYveAYMNF1Wum0DYQ4=
