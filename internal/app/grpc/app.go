@@ -6,6 +6,7 @@ import (
 	"net"
 
 	authgrpc "github.com/paniccaaa/sso/internal/grpc/auth"
+	"github.com/paniccaaa/sso/internal/storage/postgres"
 	"google.golang.org/grpc"
 )
 
@@ -13,22 +14,26 @@ type App struct {
 	log        *slog.Logger
 	gRPCServer *grpc.Server
 	port       int
+	storage    *postgres.Storage
 }
 
-func NewApp(log *slog.Logger, port int) *App {
+func NewApp(log *slog.Logger, port int, authService authgrpc.Auth, storage *postgres.Storage) *App {
 	gRPCServer := grpc.NewServer()
 
-	authgrpc.Register(gRPCServer)
+	authgrpc.Register(gRPCServer, authService)
 
-	return &App{log: log, port: port, gRPCServer: gRPCServer}
+	return &App{
+		log:        log,
+		port:       port,
+		gRPCServer: gRPCServer,
+		storage:    storage,
+	}
 }
 
-func (a *App) MustRun() error {
+func (a *App) MustRun() {
 	if err := a.Run(); err != nil {
 		panic(err)
 	}
-
-	return nil
 }
 
 func (a *App) Run() error {
@@ -59,4 +64,8 @@ func (a *App) Stop() {
 	a.log.With(slog.String("op", op)).Info("stopping gRPC server", slog.Int("port", a.port))
 
 	a.gRPCServer.GracefulStop()
+
+	if err := a.storage.Close(); err != nil {
+		a.log.Error("failed to close storage", slog.String("error", err.Error()))
+	}
 }
