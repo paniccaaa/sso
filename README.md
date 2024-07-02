@@ -1,24 +1,39 @@
 # SSO
 
-SSO service
+SSO service 
+
+Protobuf contract - https://github.com/paniccaaa/protos
 
 ## Stack:
 
-gRPC - google.golang.org/grpc
+- gRPC
 
-Generated code - github.com/paniccaaa/protos (repo which contains proto files and gen. code for gRPC and protobuf)
+- PostgreSQL
 
-PostgreSQL driver - github.com/jackc/pgx/v5 
+- JWT 
 
-Lib for jwt - github.com/golang-jwt/jwt/v5
+- cleanevn (env. config reader)
 
-Enviroment config reader - github.com/ilyakaznacheev/cleanenv
+- slog (logger)
 
-Logging - log/slog (default package)
+## Installation 
 
-Hashing passwords - golang.org/x/crypto/bcrypt
+1. **Clone the repo**
 
-Migrate- github.com/golang-migrate/migrate/v4
+```bash
+git clone https://github.com/paniccaaa/sso.git
+cd sso
+```
+
+2. **local.yaml and .env files**
+
+Make sure to fill out the local.yaml and .env files with the necessary configuration settings.
+
+3. **Run the app locally**
+
+```bash
+make run
+```
 
 ## Database migration (check **cmd/migrator**)
 
