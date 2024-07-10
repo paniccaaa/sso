@@ -8,6 +8,7 @@ import (
 	authgrpc "github.com/paniccaaa/sso/internal/grpc/auth"
 	"github.com/paniccaaa/sso/internal/storage/postgres"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 type App struct {
@@ -21,6 +22,7 @@ func NewApp(log *slog.Logger, port int, authService authgrpc.Auth, storage *post
 	gRPCServer := grpc.NewServer()
 
 	authgrpc.Register(gRPCServer, authService)
+	reflection.Register(gRPCServer)
 
 	return &App{
 		log:        log,

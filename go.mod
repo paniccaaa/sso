@@ -4,7 +4,7 @@ go 1.22.3
 
 require (
 	github.com/joho/godotenv v1.5.1
-	github.com/paniccaaa/protos v0.0.3
+	github.com/paniccaaa/protos v0.0.10
 )
 
 require (
@@ -22,11 +22,11 @@ require (
 )
 
 require (
-	golang.org/x/net v0.22.0 // indirect
+	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/sys v0.21.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240318140521-94a12d6c2237 // indirect
-	google.golang.org/grpc v1.64.0
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240624140628-dc46fd24d27d // indirect
+	google.golang.org/grpc v1.65.0
 	google.golang.org/protobuf v1.34.2 // indirect
 )
 
